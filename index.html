@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Betty Boop 💋</title>
+  <style>
+    body {
+      background: radial-gradient(circle, #ffdde1 0%, #ee9ca7 100%);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #b00000;
+    }
+
+    .envelope {
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      width: 150px;
+      height: auto;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+    }
+
+    p {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-top: 15px;
+      text-shadow: 1px 1px 2px #fff;
+    }
+
+    @media (max-width: 600px) {
+      img { width: 120px; }
+      p { font-size: 1.1em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="envelope" onclick="abrirInvitacion()">
+    <img src="https://cdn-icons-png.flaticon.com/512/3082/3082031.png" alt="Sobre rojo">
+    <p>💋 Presioná para abrir la invitación 💋</p>
+  </div>
+
+  <script>
+    function abrirInvitacion() {
+      window.location.href = "invitacion.html";
+    }
+  </script>
+</body>
+</html>

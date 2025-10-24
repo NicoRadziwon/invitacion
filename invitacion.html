@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cumple de Carolina 💋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+<style>
+  body {
+    background-image: url("images/betty-boop.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Chewy', cursive;
+    font-size: large;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 90vh;
+    margin: 0.3rem;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .card {
+      background: #fff;
+      border: 6px solid #000;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      max-width: 360px;
+      width: 90vw;
+      margin: 10px auto;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(255,0,0,0.3);
+      animation: fadeIn 1s ease;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+  }
+
+  .card::-webkit-scrollbar { display: none; }
+  .card a { text-decoration: none; color: #000; }
+  .ubi { font-weight: bold; }
+
+  p { color: #333; font-size: 1.05em; margin: 15px 0; line-height: 1.5; }
+
+  .countdown { font-size: 1.3em; color: #c00000; margin-top: 10px; font-weight: bold; text-shadow: 1px 1px 2px #fff; }
+
+  audio { margin-top: 15px; width: 100%; outline: none; border-radius: 10px; }
+  .whatsapp-btn { display: inline-block; background-color: #25D366; color: white; padding: 12px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; transition: background 0.3s; }
+  .whatsapp-btn:hover { background-color: #1ebc59; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 600px) { .card { width: 80vw; max-width: 360px; } p { font-size: 1em; } }
+</style>
+</head>
+<body>
+<div id="card_container"></div>
+
+<script>
+const container = document.getElementById("card_container");
+
+// Textos
+const textos = [
+  "La vida está hecha de momentos… <br>Y este, sin dudas, merece celebrarse. <br>Te invito a compartir conmigo mis 50 años, un brindis por el pasado, el presente y todo lo que viene. Será un placer tenerte ahí ❤️",
+  "La fiesta se realizará el día <br>Domingo 21 de Diciembre. <br>Desde las 13:00 hs hasta que el cuerpo aguante. Ubicación: <a class='ubi' href='https://maps.app.goo.gl/CutnaTYn17R2LKDj7' target='_blank'>Capital Federal, Parque Chacabuco, Tejedor 245</a>.",
+  "¡El mejor regalo es tu precencia papá! <br>Pero si deseas hacerle un obsequio, podés hacerlo mediante el siguiente alias: <br>AVES.FALDA.ILUSO"
+];
+
+// --- CARD 1: TÍTULO + IMÁGENES + PRIMER TEXTO ---
+const card1 = document.createElement("div");
+card1.className = "card";
+
+// Imagen título
+const tituloImg = document.createElement("img");
+tituloImg.src = "images/CAROLINA.png";
+tituloImg.alt = "Cumple de Carolina";
+tituloImg.style.width = "80%";
+tituloImg.style.marginBottom = "15px";
+card1.appendChild(tituloImg);
+
+// Imágenes 50 años / let's party
+const imagesContainer = document.createElement("div");
+imagesContainer.style.display = "flex";
+imagesContainer.style.flexDirection = "column";
+imagesContainer.style.alignItems = "center";
+imagesContainer.style.marginBottom = "15px";
+
+// Fila superior
+const topRow = document.createElement("div");
+topRow.style.display = "flex";
+topRow.style.justifyContent = "center";
+topRow.style.gap = "10px";
+["images/50.png", "images/anios.png"].forEach(src => {
+  const img = document.createElement("img");
+  img.src = src;
+  img.style.width = "100px";
+  topRow.appendChild(img);
+});
+
+// Fila inferior
+const bottomRow = document.createElement("div");
+bottomRow.style.display = "flex";
+bottomRow.style.justifyContent = "center";
+bottomRow.style.gap = "10px";
+["images/lets.png", "images/party.png"].forEach(src => {
+  const img = document.createElement("img");
+  img.src = src;
+  img.style.width = "100px";
+  bottomRow.appendChild(img);
+});
+
+imagesContainer.appendChild(topRow);
+imagesContainer.appendChild(bottomRow);
+card1.appendChild(imagesContainer);
+
+// Primer texto
+const p1 = document.createElement("p");
+p1.innerHTML = textos[0];
+card1.appendChild(p1);
+
+container.appendChild(card1);
+
+// --- CARD 2: CONTADOR ---
+const countdownCard = document.createElement("div");
+countdownCard.className = "card";
+
+const countdown = document.createElement("div");
+countdown.id = "countdown";
+countdown.className = "countdown";
+countdownCard.appendChild(countdown);
+container.appendChild(countdownCard);
+
+const eventDate = new Date("December 12, 2025 13:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+  const seconds = Math.floor((distance % (1000*60))/1000);
+
+  countdown.innerHTML = `
+    <div style="font-size:1.2em; font-weight:bold; margin-bottom:5px;">FALTAN</div>
+    <div style="display:flex; justify-content:center; font-size:1.8em; font-weight:bold; gap:15px;">
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <span>${days}</span><span style="font-size:0.5em; font-weight:normal;">DÍAS</span>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <span>${hours.toString().padStart(2,"0")}</span><span style="font-size:0.5em; font-weight:normal;">HORAS</span>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center;">
+        <span>${minutes.toString().padStart(2,"0")}</span><span style="font-size:0.5em; font-weight:normal;">MINUTOS</span>
+      </div>
+    </div>
+  `;
+},1000);
+
+// --- CARD 3: DIRECCIÓN ---
+const card3 = document.createElement("div");
+card3.className = "card";
+const p2 = document.createElement("p");
+p2.innerHTML = textos[1];
+card3.appendChild(p2);
+container.appendChild(card3);
+
+// --- CARD 4: REGALO ---
+const card4 = document.createElement("div");
+card4.className = "card";
+const p3 = document.createElement("p");
+p3.innerHTML = textos[2];
+card4.appendChild(p3);
+container.appendChild(card4);
+
+// --- CARD 5: CONFIRMACIÓN ---
+const card5 = document.createElement("div");
+card5.className = "card";
+
+// Botón WhatsApp
+const whatsapp = document.createElement("a");
+whatsapp.href = "https://wa.me/5491138752044?text=Confirmo%20mi%20asistencia";
+whatsapp.target = "_blank";
+whatsapp.className = "whatsapp-btn";
+whatsapp.textContent = "Confirmar asistencia con Natalia";
+whatsapp.style.margin = "15px 0";
+card5.appendChild(whatsapp);
+
+// Audio
+const audio = document.createElement("audio");
+audio.controls = true;
+audio.loop = true;
+audio.src = "audio/luismi.m4a";
+audio.hidden = "true";
+card5.appendChild(audio);
+
+container.appendChild(card5);
+</script>
+</body>
+</html>
